@@ -1,16 +1,15 @@
-import './App.css';
-import Navbar from './Navbar';
-import Shop from './Shop';
+import Navbar from "./Components/Navbar";
+import Shop from "./Components/Shop";
 
 function App() {
-	return (
-		<>
-			<Navbar />
-			<div className="container">
-				<Shop />
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div div className="container">
+        <Navbar />
+        <Shop />
+      </div>
+    </>
+  );
 }
 
 export default App;

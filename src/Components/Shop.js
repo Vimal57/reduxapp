@@ -1,23 +1,25 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from './state/index';
+import { actionCreators } from '../state/index';
 
-function Shop() {
+const Shop = () => {
 	const dispatch = useDispatch();
-	const { depositeMoney, withdrawMoney } = bindActionCreators(
-		actionCreators,
-		dispatch
-	);
+  const balance = useSelector(state => state.amount);
+	const { withdrawMoney, depositeMoney } = bindActionCreators(actionCreators, dispatch);
 
 	return (
-		<div>
-			<h2>Deposit/Withdraw Money</h2>
+		<div className="container my-3">
+			<h2>Deposite/Withdraw Money</h2>
+
+
 			{/* without using bindActionCreators */}
 			{/* <button className="btn btn-primary mx-2" onClick={() => {dispatch(actionCreators.withdrawMoney(100))}}>-</button>
-        Update Balance
+      Update Balance
       <button className="btn btn-primary mx-2" onClick={() => {dispatch(actionCreators.depositeMoney(100))}}>+</button> */}
-			{/* with the use of bindActionCreators */}
+
+
+			{/* with use of bindActionCreators */}
 			<button
 				className="btn btn-primary mx-2"
 				onClick={() => {
@@ -26,7 +28,7 @@ function Shop() {
 			>
 				-
 			</button>
-			Update Balance
+			Update Balance : ({balance})
 			<button
 				className="btn btn-primary mx-2"
 				onClick={() => {
@@ -37,6 +39,6 @@ function Shop() {
 			</button>
 		</div>
 	);
-}
+};
 
 export default Shop;
